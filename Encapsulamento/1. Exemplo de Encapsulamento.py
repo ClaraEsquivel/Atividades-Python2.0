@@ -21,6 +21,7 @@ class Conta:
     def saldo(self):
         return self._saldo
     
+
     def sacar(self, valor) -> float:
         try:
             self.__verificar_sacar(valor)
@@ -36,6 +37,7 @@ class Conta:
             #raise = lançando um erro 
     
 
+
     def depositar(self, valor):
         try:
             self.__verificar_depositar(valor)
@@ -50,11 +52,13 @@ class Conta:
             raise ValorNegativoError("Não é possível depositar um valor negativo")
 
 
+
 class ContaCorrente(Conta):
     pass
 
 class ContaPoupanca(Conta):
     pass
+
 
 #Instanciando classes.
 conta_corrente = ContaCorrente(123, 111)
@@ -64,5 +68,4 @@ print(conta_corrente.saldo)
 print(conta_corrente.sacar(200))
 print(conta_corrente.saldo)
 print(conta_corrente.depositar(-200))
-
     
