@@ -29,6 +29,7 @@ class Funcionario(ABC):
         return(
             f"\nNome: {self.nome}"
             f"\nEmail: {self.email}"
+            # f"\nSálario: {self.salario_final}"
             f"\n= Endereço = {self.endereco}"
                 )    
     
@@ -36,8 +37,7 @@ class Funcionario(ABC):
     def salario_final (self) -> float:
         pass
 
-
-    def salario (self,valor):
+    def salario_final(self,valor):
         try:
             self.__verificar_salario(valor)
         except ValorNegativoError as error:
@@ -46,3 +46,28 @@ class Funcionario(ABC):
     def __verificar_salario(self,valor):
         if valor < 0:
             raise ValorNegativoError("Não é possível inserir um salário")
+
+
+
+class Motoboy(Funcionario):
+    def __init__(self, nome: str, email: str, cnh:str, endereco: Endereco) -> None:
+        super().__init__(nome, email, endereco)
+        self.cnh = cnh
+        
+
+    def __str__(self) -> str:
+        return (f"{super().__str__()}"
+                f"\nCNH: {self.cnh}"
+                )
+        
+
+class Gerente(Funcionario):
+    def __init__(self, nome: str, email: str, endereco: Endereco) -> None:
+        super().__init__(nome, email, endereco)
+       
+
+
+    
+motoboy1 = Motoboy("A", "A@gmail.com", "A", Endereco("B", "123", "BB"))
+print(motoboy1)
+print(motoboy1.salario_final(-2000))
