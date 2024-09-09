@@ -45,7 +45,7 @@ class Funcionario(ABC):
         
     def __verificar_salario(self,valor):
         if valor < 0:
-            raise ValorNegativoError("Não é possível inserir um salário")
+            raise ValorNegativoError("Não é possível inserir um salário negativo")
 
 
 
@@ -67,7 +67,12 @@ class Gerente(Funcionario):
        
 
 
-    
-motoboy1 = Motoboy("A", "A@gmail.com", "A", Endereco("B", "123", "BB"))
+motoboy1 = Motoboy("João", "joao@gmail.com", "A", Endereco("Castelo Branco", "123", "Salvador"))
 print(motoboy1)
+print("= Salário =")
 print(motoboy1.salario_final(-2000))
+
+gerente1 = Gerente("Pedro", "pedro@gmail.com", Endereco("Liberdade", "115", "São Paulo"))
+print(gerente1)
+print("= Salário =")
+print(gerente1.salario_final(-5000))
